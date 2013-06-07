@@ -1,0 +1,83 @@
+html{
+	background		: #FFFFFF;
+}
+
+div.home_page, img.home_page{
+    border                      : none;
+    text-align                  : center;
+}
+
+div.working-space{
+	font-family		: Verdana;
+	font-size		: 12px;
+	width			: 750px;
+	margin			: 0 auto;
+	background		: #EEEEEE;
+}
+
+div.console{
+	font-family		: Courier;
+	font-size		: 11px;
+	font-weight		: bold;
+	color			: #00FF00;
+	width			: 750px;
+	height			: 200px;
+	margin			: 0 auto;
+	background		: #333333;
+	overflow		: auto;
+}
+
+div.console h1{
+	padding			: 5px 10px 3px 10px;
+	font-size		: 14px;
+}
+
+div.console ul.list{
+	font-weight		: normal;
+}
+
+div.console ul li.error{
+	color			: #FF0000;
+}
+
+div.console ul li.warn{
+	color			: #FFDD00;
+}
+
+div.container{
+	position		: relative;
+	margin			: auto;
+	background		: #FFAAAA;
+	height			: 200px;
+	width			: 350px;
+	z-index			: 0;
+	text-align		: center;
+}
+
+div.red{
+	background		: #FF3333;
+}
+
+div.irect{
+	position		: absolute;
+	width			: 100px;
+	height			: 50px;
+	top				: 120px;
+	left			: 90px;
+}
+
+div.rect{
+	position		: absolute;
+	width			: 50px;
+	height			: 100px;
+	top				: 30px;
+	left			: 250px;
+}
+
+div.square{
+	position		: absolute;
+	width			: 50px;
+	height			: 50px;
+	top				: 0px;
+	left			: 0px;
+}

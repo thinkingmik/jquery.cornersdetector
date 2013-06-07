@@ -1,0 +1,39 @@
+{
+    "name": "cornersdetector",
+    "title": "jQuery Corners Detector",
+    "description": "This is a jQuery plugin that can determine the coordinates of corners of a HTML page element. It can look at the element position and return the coordinates of its four corners. The object can check if the element corners are outside the container element coordinates, as well move the element to a new position inside its container element.",
+    "keywords": [
+        "corners",
+        "detector",
+		"corner",
+		"positioning",
+		"drag",
+		"drop"
+    ],
+    "version": "1.0.0",
+    "author": {
+        "name": "Michele Andreoli",
+        "url": "http://www.jabprogramming.com"
+    },
+    "maintainers": [
+        {
+            "name": "Michele Andreoli",
+            "email": "michi.andreoli@gmail.com",
+            "url": "http://www.jabprogramming.com"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "GPL",
+            "url": "http://opensource.org/licenses/gpl-license-php GNU Public License"
+        }
+    ],
+    "bugs": "https://github.com/mandreoli/jquery.cornersdetector/issues",
+    "homepage": "https://github.com/mandreoli/jquery.cornersdetector",
+    "docs": "https://github.com/mandreoli/jquery.cornersdetector",
+    "download": "http://code.mandreoli.com/#cornersdetector",
+    "dependencies": {
+        "jquery": ">=1.6.2",
+		"jquery-ui": ">=1.8.14"
+    }
+}

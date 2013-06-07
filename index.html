@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="eng">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<title>Corners Detector Plugin</title>
+	<link href="layout.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="jquery/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript" src="jquery/jquery-ui/js/jquery-ui-1.8.14.custom.min.js"></script>
+	<script type="text/javascript" src="libs/multirotation/jquery.multirotation-1.0.0.js"></script>
+	<script type="text/javascript" src="jquery.cornersdetector-1.0.0.js"></script>
+</head>
+<body>
+
+    <div class="working-space">
+            <div id="red_box" class="container">350x200 Drag the items to move them outside the container, or click to perform a rotation.
+                    <div id="square" class="draggable red square">50x50<br/>square</div>
+                    <div id="irect" class="draggable red rect">50x100<br/>irect</div>
+                    <div id="rect" class="draggable red irect">100x50<br/>rect</div>
+            </div>
+    </div>
+    <div id="console" class="console">
+            <h1>Corners Detector Plugin Activity: </h1>
+            <ul class="list">
+            </ul>
+    </div>
+
+    <script type="text/javascript">
+	$(function() {	
+		/* ROTATE ELEMENT */
+		$('div.draggable').live('click', 
+			function() {
+				$(this).rotate({ angle: 45 });
+				writePosition($(this));
+				writeOuterCorners($(this));
+				$(this).moveElement($(this).getCurrentDegrees());
+			}
+		);
+		
+		/* DRAGGABLE ELEMENTS */
+		$('div.draggable').draggable({
+			cursor: 'move',
+			helper: 'original',
+			stack: '.red',
+			distance: 10,
+			stop: function(event, ui) {
+				writePosition($(this));
+				writeOuterCorners($(this));
+				$(this).moveElement($(this).getCurrentDegrees());
+			}
+		});
+		
+		function writePosition(elem) {
+			var name = elem.prop('id');
+			var console = $('div#console').find('ul.list');
+			var pts = elem.getCorners(elem.getCurrentDegrees()).elem_pts;
+			console.append('<li>$(#' + name + ').getCorners('+ elem.getCurrentDegrees() +').elem_pts = A[' + pts.a.x + ','+ pts.a.y +'], B[' + pts.b.x + ','+ pts.b.y +'], C[' + pts.c.x + ','+ pts.c.y +'], D[' + pts.d.x + ','+ pts.d.y +']</li>');				
+			console.parent().scrollTop(console.height());
+		}
+		
+		function writeOuterCorners(elem) {
+			var name = elem.prop('id');
+			var console = $('div#console').find('ul.list');
+			var pts = elem.checkCorners(elem.getCurrentDegrees());
+			if (pts.length > 0) {
+				console.append('<li class="error"> $(#'+name+') has ' + pts.length + ' point/s out of its container</li>');
+				var sublist = '<ul class="sublist">';
+				for (var i = 0; i < pts.length; i++) {
+					var p = pts[i];
+					sublist += '<li>$(#' + name + ').checkCorners('+ elem.getCurrentDegrees() +')['+ i +'] = POINT['+ p.point.x +','+ p.point.y +'] OFFSET['+ p.offset.x +','+ p.offset.y +']</li>';
+				}
+				sublist += '</ul>';
+				console.append(sublist);
+				console.append('<li> $(#'+name+') was repositioned inside its container</li>');
+			}
+			else {
+				console.append('<li class="warn"> $(#'+name+') hasn\'t point/s out of its container</li>');
+			}
+			console.parent().scrollTop(console.height());
+		}
+	});
+	</script>
+    </body>
+</html>
