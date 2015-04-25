@@ -5,6 +5,5 @@ It can look at the element position and return the coordinates of its four corne
 
 The object can check if the element corners are outside the container element coordinates, as well move the element to a new position inside its container element.
 
-<h1>Documentation</h1>
-Read complete documentation at:
-<a href="http://jabprogramming.com/jsclasses/corners-detector" title="documentation">corners detector plugin page.</a>
+<h1>Demo</h1>
+<a href="http://demo.thinkingmik.com/jquery/cornersdetector" title="demo">corners detector plugin page.</a>
